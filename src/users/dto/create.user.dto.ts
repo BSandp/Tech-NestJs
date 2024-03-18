@@ -1,4 +1,5 @@
-import {IsEmail,Matches,IsNotEmpty, MinLength,IsString } from "class-validator";
+import {IsEmail,Matches,IsNotEmpty, MinLength,IsString,Validate } from "class-validator";
+import { UniqueEmailValidator } from "../validations/unique-emailvalidator";
 
 export class createUSerDto{
     @IsNotEmpty()
@@ -9,6 +10,7 @@ export class createUSerDto{
     readonly name: string;
     readonly lastname: string;
     @IsEmail()
+    @Validate(UniqueEmailValidator,{message: "email already exists XD"}) 
     readonly email: string;
     @IsNotEmpty()
     @IsString()

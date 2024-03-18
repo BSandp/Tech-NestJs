@@ -52,4 +52,7 @@ export class UsersService {
       throw new NotFoundException('user Not found');
     }
   }
+  async findByEmail(email: string): Promise<User> {
+    return this.userModel.findOne({ email });
+  }
 }    
